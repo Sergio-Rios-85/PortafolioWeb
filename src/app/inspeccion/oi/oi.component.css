@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+.navbar-custom {
+    background-color: #007bff; /* Fondo azul */
+  }
+  
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link {
+    color: white; /* Letras blancas */
+  }
+  
+  .navbar-custom .nav-link.active {
+    color: #e8e8e8; /* Color de enlace activo (amarillo) */
+  }
+  

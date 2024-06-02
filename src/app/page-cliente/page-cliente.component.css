@@ -1,0 +1,19 @@
+.navbar-custom {
+    background-color: #007bff; /* Fondo azul */
+  }
+  
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link {
+    color: white; /* Letras blancas */
+  }
+  
+  .navbar-custom .nav-link.active {
+    color: #e1e1e1; /* Color de enlace activo (amarillo) */
+  }
+
+  .wider-container {
+    max-width: 500px; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+  }
+  
+  

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cliente</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .form-container {
+      max-width: 400px;
+      margin: auto;
+    }
+    .background {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    .subtitulo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .encabezado {
+      font-weight: bold;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <i class="bi bi-car-front"></i> Certitech
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="page-cliente">Pagina anterior</a>
+            </li>       
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="">Pagina principal</a>
+            </li>           
+          </ul>
+        </div>
+      </div>
+    </nav> 
+
+  <div class="container form-container background">
+    <h3 class="subtitulo encabezado">Información del vehículo</h3>
+    <div class="mb-3">
+      <label for="patenteInput" class="form-label">Buscar por Patente</label>
+      <input type="text" class="form-control" id="patenteInput" [(ngModel)]="PATENTE">
+    </div>
+    
+    <button class="btn btn-primary" (click)="buscarVehiculos()">Buscar</button>
+    
+    <div class="list-group mt-4" *ngIf="vehiculos.length > 0">
+      <div *ngFor="let vehiculo of vehiculos" class="list-group-item">
+        <p><strong>Patente:</strong> {{ vehiculo.PATENTE }}</p>
+        <p><strong>Motor:</strong> {{ vehiculo.MOTOR }}</p>
+        <p><strong>Chasis:</strong> {{ vehiculo.CHASIS }}</p>
+        <p><strong>Kilometraje:</strong> {{ vehiculo.KILOMETRAJE }}</p>
+        <p><strong>Marca:</strong> {{ vehiculo.VEH_MARCA }}</p>
+        <p><strong>Modelo:</strong> {{ vehiculo.VEH_MODELO }}</p>
+        <p><strong>Color:</strong> {{ vehiculo.VEH_COLOR }}</p>
+        <p><strong>Año:</strong> {{ vehiculo.VEH_ANIO }}</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

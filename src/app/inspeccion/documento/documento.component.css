@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+}
+
+.selected {
+    background-color: #ffcccc !important; /* Color rojo claro */
+    border: 2px solid #0051ff !important; /* Borde rojo para mayor visibilidad */
+}
+
+.navbar-custom {
+    background-color: #007bff; /* Fondo azul */
+  }
+  
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link {
+    color: white; /* Letras blancas */
+  }
+  
+  .navbar-custom .nav-link.active {
+    color: #dddddd; /* Color de enlace activo (amarillo) */
+  }
+
+  

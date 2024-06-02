@@ -1,0 +1,28 @@
+.navbar-custom {
+  background-color: #007bff; /* Fondo azul */
+}
+  
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+  color: white; /* Letras blancas */
+}
+  
+.navbar-custom .nav-link.active {
+  color: #fffefc; /* Color de enlace activo (amarillo) */
+}
+  
+.faq-container {
+  max-width: 600px;
+  margin-left: 0;
+}
+
+.carousel {
+  max-width: 1200px; /* Ajusta el ancho del carrusel */
+  max-height: 400px; /* Ajusta la altura del carrusel */
+  margin: 0 auto; /* Centra el carrusel */
+}
+
+.carousel-inner img {
+  max-height: 400px; /* Ajusta la altura de las imágenes */
+  object-fit: cover; /* Asegura que las imágenes se adapten bien */
+}

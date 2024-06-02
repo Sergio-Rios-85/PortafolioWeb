@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <i class="bi bi-car-front"></i> Certitech
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="inspeccion">Pagina inspección</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="">Pagina principal</a>
+              </li>                  
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container mt-4">
+      <h1 class="text-white">Nueva inspección</h1>
+
+      <div class="d-flex justify-content-center">
+        <div class="card" style="width: 29rem;">
+            <div class="card-body">
+                <form (ngSubmit)="guardarInspeccion()">
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha de inspección</label>
+                        <input type="date" class="form-control" id="fecha" [(ngModel)]="FECHA" name="fecha" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="hora" class="form-label">Hora</label>
+                        <input type="time" class="form-control" id="hora" [(ngModel)]="HORA" name="hora" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="patente" class="form-label">Patente</label>
+                        <select class="form-select" id="patente" [(ngModel)]="ID_VEHICULO" name="patente" required>
+                            <option *ngFor="let patente of patentes" [value]="patente.ID_VEHICULO">{{ patente.PATENTE }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="transmision" class="form-label">Transmisión</label>
+                        <select class="form-select" id="transmision" [(ngModel)]="ID_TRANSMISION" name="transmision" required>
+                            <option *ngFor="let transmision of transmisions" [value]="transmision.ID_TRANSMISION">{{ transmision.TRANSMISION }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="combustible" class="form-label">Combustible</label>
+                        <select class="form-select" id="combustible" [(ngModel)]="ID_COMBUSTIBLE" name="combustible" required>
+                            <option *ngFor="let combustible of combustibles" [value]="combustible.ID_COMBUSTIBLE">{{ combustible.COMBUSTIBLE }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="resultado" class="form-label">Resultado</label>
+                        <select class="form-select" id="resultado" [(ngModel)]="ID_RESULTADO_INSPECCION" name="resultado" required>
+                            <option *ngFor="let resultado of resultados" [value]="resultado.ID_RESULTADO_INSPECCION">{{ resultado.RESULTADO_INSPECCION }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pieza" class="form-label">Pieza dañada</label>
+                        <select class="form-select" id="pieza" [(ngModel)]="ID_PIEZA_ROTA" name="pieza" required>
+                            <option *ngFor="let pieza_rota of pieza_rotas" [value]="pieza_rota.ID_PIEZA_ROTA">{{ pieza_rota.PIEZA_ROTA }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipo" class="form-label">Tipo de daño</label>
+                        <select class="form-select" id="tipo" [(ngModel)]="ID_TIPO_DANIO" name="tipo" required>
+                            <option *ngFor="let tipo_danio of tipo_danios" [value]="tipo_danio.ID_TIPO_DANIO">{{ tipo_danio.TIPO_DANIO }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gravedad" class="form-label">Gravedad de daño</label>
+                        <select class="form-select" id="gravedad" [(ngModel)]="ID_GRAVEDAD_DANIO" name="gravedad" required>
+                            <option *ngFor="let gravedad_danio of gravedad_danios" [value]="gravedad_danio.ID_GRAVEDAD_DANIO">{{ gravedad_danio.GRAVEDAD_DANIO }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="observacion" class="form-label">Observación</label>
+                        <input type="text" class="form-control" id="observacion" [(ngModel)]="OBSERVACION" name="observacion" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+     
+      
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

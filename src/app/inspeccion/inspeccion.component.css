@@ -1,0 +1,69 @@
+.navbar-custom {
+    background-color: #007bff; /* Fondo azul */
+  }
+  
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link {
+    color: white; /* Letras blancas */
+  }
+  
+  .navbar-custom .nav-link.active {
+    color: #fbfafa; /* Color de enlace activo (amarillo) */
+  }
+  
+
+.center{
+    text-align: center;
+}
+
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#container strong {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+#container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+}
+
+#container a {
+    text-decoration: none;
+}
+
+.titulo-centrado {
+    text-align: center;
+}
+
+.imagen-auto {
+    width: 100%; /* Ancho completo del contenedor */
+    height: 150px; /* Altura fija para la imagen */
+    object-fit: cover; /* Para asegurarse de que la imagen se ajuste al contenedor */
+}
+
+.card-rectangular {
+    width: 100%; /* Ancho de la tarjeta */
+    margin: 0 auto 20px; /* Centrar la tarjeta y agregar espacio inferior */
+}
+
+.tamano-letra {
+    font-size: 15px; /* Tamaño de la fuente deseado */
+}
+
+.card-body {
+    padding: 5px;
+}
+
+h1 {
+    text-align: center;
+}

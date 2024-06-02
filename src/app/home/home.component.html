@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certitech</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-car-front"></i> Certitech
+      </a>
+      <a class="navbar-brand" href="quienes-somos">
+        <i class="bi bi-question"></i> Quienes somos
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="login-usuario">Trabajador</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cliente">Cliente</a>
+          </li>           
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets/images/C1.jpg" class="d-block w-100" alt="Autoinspección">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/images/c2.jpg" class="d-block w-100" alt="Informe">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/images/c3.jpg" class="d-block w-100" alt="c3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="container mt-5 faq-container">
+    <h3 class="text-white">Preguntas Frecuentes</h3>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            ¿Qué ocurre si tengo los documentos extraviados?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <p>En el caso de extravío de aquellos documentos necesarios para realizar el proceso de revisión técnica, se debe solicitar el duplicado de éstos y de la siguiente forma:</p>
+            <ul>
+              <li><strong>Padrón:</strong> Solicitar duplicado en el Registro Nacional de Vehículos Motorizados o solicitar un Certificado de Anotaciones Vigentes en el mismo organismo, esto se puede realizar de forma online.</li>
+              <li><strong>Permiso de Circulación:</strong> Se debe solicitar el duplicado en la municipalidad en la cual se obtuvo el último permiso de circulación.</li>
+              <li><strong>Certificado de Revisión Técnica y de Gases:</strong> Se debe solicitar el duplicado en la planta revisora en la cual se realizó el último proceso de revisión técnica, ya sea llamando directamente a la planta o por medio de correo electrónico.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Mi revisión técnica figura como vencida al momento de pagar mi permiso de circulación online.
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <p>En este caso, debe realizar una nueva revisión técnica en una planta autorizada y obtener un nuevo certificado. Una vez obtenido el certificado, podrá proceder con el pago del permiso de circulación online.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Reservé hora para la revisión técnica pero no me llegó el correo. ¿Qué tengo que hacer?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <p>Si no ha recibido el correo de confirmación de su reserva, verifique su carpeta de spam o correo no deseado. Si aún así no encuentra el correo, comuníquese directamente con la planta revisora para confirmar su reserva.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            ¿Qué debo hacer si mi revisión técnica está aprobada pero no figura en el sistema?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <p>Si su revisión técnica se encuentra aprobada, puede verificarlo en la página del Ministerio de Transportes y Telecomunicaciones de Chile, <a href="https://www.mtt.gob.cl" target="_blank">aquí</a>. En el caso de no encontrar su revisión técnica en la pagina mencionada, puede llamar o acercarse a la planta donde realizo su revisión técnica, donde lo pueden orientar y apoyar para encontrar una solución al problema.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts necesarios para Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+5noFGGtXT19fTqfqlu5LM9E5jFZe" crossorigin="anonymous"></script>
+</body>
+</html>

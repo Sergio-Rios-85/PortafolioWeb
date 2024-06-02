@@ -1,0 +1,12 @@
+.navbar-custom {
+    background-color: #007bff; /* Fondo azul */
+  }
+    
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link {
+    color: white; /* Letras blancas */
+  }
+    
+  .navbar-custom .nav-link.active {
+    color: #fffefc; /* Color de enlace activo (amarillo) */
+  }
