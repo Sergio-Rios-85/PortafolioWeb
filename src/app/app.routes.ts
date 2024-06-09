@@ -13,6 +13,7 @@ import { BusquedaVehClienteComponent } from './busqueda-veh-cliente/busqueda-veh
 import { PageClienteComponent } from './page-cliente/page-cliente.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { OlvidarContrasenaComponent } from './olvidar-contrasena/olvidar-contrasena.component';
+import { ReservarComponent } from './reservar/reservar.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent }, 
@@ -31,5 +32,6 @@ export const routes: Routes = [
   { path: 'quienes-somos', component: QuienesSomosComponent },
   { path: 'page-cliente', component: PageClienteComponent },
   { path: 'olvidar-contrasena', component: OlvidarContrasenaComponent },
+  { path: 'reservar', component: ReservarComponent },
   { path: '**', redirectTo: 'page-usuario', pathMatch: 'full' }
 ];

@@ -11,4 +11,14 @@
     color: #e1e1e1; /* Color de enlace activo (amarillo) */
   }
 
+  .contact-card {
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-card {
+      width: 90%;
+    }
+  }
   

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <i class="bi bi-car-front"></i> Certitech
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="page-usuario">Pagina anterior</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="">Pagina principal</a>
+            </li>                  
+          </ul>
+        </div>
+      </div>
+    </nav>
+   
+    <h1 class="text-white">Ingresar Revisión Técnica</h1>
+    <div class="d-flex justify-content-center">
+        <div class="card" style="width: 29rem;">
+            <div class="container mt-4">
+                <h4 class="subtitulo encabezado">Por favor seleccione la planta</h4>
+                <div class="mb-3">
+                  <label for="region" class="form-label">Región</label>
+                  <select id="region" class="form-select" [(ngModel)]="selectedRegion" (change)="loadSucursales()">
+                    <option *ngFor="let region of regiones" [value]="region.ID_REGION">{{ region.REGION }}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="sucursal" class="form-label">Sucursal</label>
+                  <select id="sucursal" class="form-select" [(ngModel)]="selectedSucursal">
+                    <option *ngFor="let sucursal of sucursales" [value]="sucursal.ID_SUCURSAL">{{ sucursal.SUCURSAL }}</option>
+                  </select>
+                </div>
+          
+                <h4 class="subtitulo encabezado">Fechas disponibles</h4>
+                <input type="date" class="form-control" [(ngModel)]="selectedDate" (change)="loadAvailableTimes()">
+          
+                <h4 class="subtitulo encabezado">Horarios disponibles {{ selectedDate | date: 'dd-MM-yyyy' }}</h4>
+          
+                <div class="row">
+                  <div class="col-3" *ngFor="let time of availableTimes">
+                    <button type="button" class="btn btn-outline-dark w-100 mb-2"
+                      [ngClass]="{'btn-warning': time.BOOKED, 'btn-success': selectedTimeSlot && selectedTimeSlot.HORA === time.HORA}"
+                      [disabled]="time.BOOKED" (click)="selectTime(time)">
+                      {{ time.HORA }}
+                    </button>
+                  </div>
+                </div>
+          
+                <h4 class="subtitulo encabezado">Ingresar datos del vehículo</h4>
+                <div class="mb-3">
+                  <label for="patente" class="form-label">Patente</label>
+                  <select id="patente" class="form-select" [(ngModel)]="ID_VEHICULO">
+                    <option *ngFor="let patente of patentes" [value]="patente.ID_VEHICULO">{{ patente.PATENTE }}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="marca" class="form-label">Marca</label>
+                  <select id="marca" class="form-select" [(ngModel)]="ID_MARCA">
+                    <option *ngFor="let marca of marcas" [value]="marca.ID_MARCA">{{ marca.MARCA }}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="modelo" class="form-label">Modelo</label>
+                  <select id="modelo" class="form-select" [(ngModel)]="ID_MODELO">
+                    <option *ngFor="let modelo of modelos" [value]="modelo.ID_MODELO">{{ modelo.MODELO }}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="anio" class="form-label">Año</label>
+                  <select id="anio" class="form-select" [(ngModel)]="ID_ANIO">
+                    <option *ngFor="let anio of anios" [value]="anio.ID_ANIO">{{ anio.ANIO }}</option>
+                  </select>
+                </div>
+          
+                <button type="button" class="btn btn-primary w-100" (click)="reservar()">Reservar</button>
+              </div>
+          
+
+        </div>
+    </div>        
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

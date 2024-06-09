@@ -1,0 +1,41 @@
+.navbar-custom {
+    background-color: #007bff; /* Fondo azul */
+  }
+  
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link {
+    color: white; /* Letras blancas */
+  }
+  
+  .navbar-custom .nav-link.active {
+    color: #e1e1e1; /* Color de enlace activo (amarillo) */
+  }
+
+
+h1 {
+    text-align: center;
+}
+
+.center{
+    text-align: center;
+}
+
+
+
+  
+  
+  .subtitulo {
+    margin-top: 20px;
+  }
+  
+  .btn-warning {
+    background-color: yellow !important;
+    color: black !important;
+  }
+  
+  .btn-success {
+    background-color: rgb(127, 219, 127) !important;
+    color: white !important;
+    border: 2px solid rgb(88, 205, 88) !important;
+  }
+  
