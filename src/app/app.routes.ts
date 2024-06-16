@@ -1,3 +1,4 @@
+// src/app/app.routes.ts
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ClienteComponent } from './cliente/cliente.component';
@@ -14,24 +15,23 @@ import { PageClienteComponent } from './page-cliente/page-cliente.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { OlvidarContrasenaComponent } from './olvidar-contrasena/olvidar-contrasena.component';
 import { ReservarComponent } from './reservar/reservar.component';
+import { AuthGuard } from './auth.guard'; 
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent }, 
+  { path: '', component: HomeComponent },
   { path: 'cliente', component: ClienteComponent },
   { path: 'login-usuario', component: LoginUsuarioComponent },
-  { path: '', redirectTo: 'login-usuario', pathMatch: 'full' },
-  { path: 'page-usuario', component: PageUsuarioComponent },
-  { path: 'vehiculo', component: VehiculoComponent },
-  { path: 'inspeccion', component: InspeccionComponent },
-  { path: 'inspeccion/oi', component: OiComponent },
-  { path: 'inspeccion/documento', component: DocumentoComponent },
+  { path: 'page-usuario', component: PageUsuarioComponent, canActivate: [AuthGuard] }, 
+  { path: 'vehiculo', component: VehiculoComponent, canActivate: [AuthGuard] },
+  { path: 'inspeccion', component: InspeccionComponent, canActivate: [AuthGuard] }, 
+  { path: 'inspeccion/oi', component: OiComponent, canActivate: [AuthGuard] }, 
+  { path: 'inspeccion/documento', component: DocumentoComponent, canActivate: [AuthGuard] },
   { path: 'login-cliente', component: LoginClienteComponent },
   { path: 'registro', component: RegistroComponent },
-  { path: '', redirectTo: '/registro', pathMatch: 'full' },
-  { path: 'busqueda-veh-cliente', component: BusquedaVehClienteComponent },
+  { path: 'busqueda-veh-cliente', component: BusquedaVehClienteComponent, canActivate: [AuthGuard] }, 
   { path: 'quienes-somos', component: QuienesSomosComponent },
-  { path: 'page-cliente', component: PageClienteComponent },
+  { path: 'page-cliente', component: PageClienteComponent, canActivate: [AuthGuard] }, 
   { path: 'olvidar-contrasena', component: OlvidarContrasenaComponent },
   { path: 'reservar', component: ReservarComponent },
-  { path: '**', redirectTo: 'page-usuario', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

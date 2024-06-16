@@ -33,20 +33,20 @@
         <div class="card-body">
           <h5 class="card-title d-flex justify-content-center">Cliente</h5>
           <div class="d-grid gap-2">
-            <button href="login-cliente" class="btn btn-primary">Iniciar sesión</button>          
-            <button href="registro" class="btn btn-primary">Registrarse</button>
+            <button [routerLink]="['/login-cliente']" class="btn btn-primary">Iniciar sesión</button>          
+            <button [routerLink]="['/registro']"class="btn btn-primary">Registrarse</button>
             <a href="olvidar-contrasena" class="btn btn-link">¿Olvidaste tu contraseña?</a>
           </div>          
         </div>
       </div>
     </div>
-
+   
     <div class="card contact-card">
       <div class="card-header">
         <h3 class="subtitulo encabezado">Contáctenos</h3>
       </div>
       <div class="card-body">
-        <h1>Ingrese sus datos</h1>
+        <h2 class="text-center">Ingrese sus datos</h2>
         <form (ngSubmit)="enviarContacto()">
           <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>

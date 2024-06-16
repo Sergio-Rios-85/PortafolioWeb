@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login-cliente',
@@ -15,7 +16,7 @@ export class LoginClienteComponent {
   correo!: string;
   contrasena!: string;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) {}
 
   login() {
     const data = {
@@ -27,13 +28,16 @@ export class LoginClienteComponent {
       (response) => {
         alert(response.message);
         if (response.message === 'Inicio de sesión exitoso') {
+          this.authService.login();
           localStorage.setItem('clienteId', response.clienteId);
           this.router.navigate(['/page-cliente']);
+        } else {
+          alert('Credenciales incorrectas');
         }
       },
       (error) => {
         console.error('Error:', error);
-        alert('Error en el servidor');
+        alert('Credenciales incorrectas');
       }
     );
   }

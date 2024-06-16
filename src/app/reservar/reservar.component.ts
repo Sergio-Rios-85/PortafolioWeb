@@ -17,10 +17,10 @@ interface TimeSlot {
   styleUrls: ['./reservar.component.css']
 })
 export class ReservarComponent {
-  ID_VEHICULO!: number;
-  ID_MARCA!: number;
-  ID_MODELO!: number;
-  ID_ANIO!: number;
+  selectedPatente!: string;
+  selectedMarca!: string;
+  selectedModelo!: string;
+  selectedAnio!: number;
   HORA!: string;
   selectedTimeSlot!: TimeSlot;
 
@@ -31,9 +31,6 @@ export class ReservarComponent {
   selectedSucursal!: number;
   selectedDate!: string;
   patentes: any[] = [];
-  marcas: any[] = [];
-  modelos: any[] = [];
-  anios: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -60,9 +57,8 @@ export class ReservarComponent {
 
   loadAvailableTimes() {
     if (this.selectedDate) {
-      const formattedDate = new Date(this.selectedDate).toISOString().split('T')[0]; // Formatear la fecha a YYYY-MM-DD
+      const formattedDate = new Date(this.selectedDate).toISOString().split('T')[0];
       this.http.get<TimeSlot[]>(`http://localhost:4000/available-times?date=${formattedDate}`).subscribe(data => {
-        console.log('Horarios disponibles:', data);
         this.availableTimes = data;
       }, error => {
         console.error('Error al cargar horarios disponibles:', error);
@@ -71,7 +67,7 @@ export class ReservarComponent {
   }
 
   selectTime(time: TimeSlot) {
-    this.selectedTimeSlot = time; // Asigna el horario seleccionado
+    this.selectedTimeSlot = time;
     this.HORA = time.HORA;
   }
 
@@ -79,22 +75,20 @@ export class ReservarComponent {
     this.http.get<any[]>('http://localhost:4000/patentes').subscribe(data => {
       this.patentes = data;
     });
+  }
 
-    this.http.get<any[]>('http://localhost:4000/marcas').subscribe(data => {
-      this.marcas = data;
-    });
-
-    this.http.get<any[]>('http://localhost:4000/modelos').subscribe(data => {
-      this.modelos = data;
-    });
-
-    this.http.get<any[]>('http://localhost:4000/anios').subscribe(data => {
-      this.anios = data;
+  loadVehicleData() {
+    this.http.get<any>(`http://localhost:4000/vehiculo/${this.selectedPatente}`).subscribe(data => {
+      this.selectedMarca = data.MARCA;
+      this.selectedModelo = data.MODELO;
+      this.selectedAnio = data.ANIO;
+    }, error => {
+      console.error('Error al cargar datos del vehículo:', error);
     });
   }
 
   reservar() {
-    if (this.ID_VEHICULO == null || this.ID_MARCA == null || this.ID_MODELO == null || this.ID_ANIO == null || this.HORA == null) {
+    if (!this.selectedPatente || !this.selectedMarca || !this.selectedModelo || !this.selectedAnio || !this.HORA) {
       alert('Por favor complete todos los campos obligatorios.');
       return;
     }
@@ -103,10 +97,10 @@ export class ReservarComponent {
       FECHA: this.selectedDate,
       SUCURSAL: this.selectedSucursal,
       HORA: this.HORA,
-      VEH_PATENTE: this.ID_VEHICULO, // Asegúrate de que estás enviando la patente del vehículo
-      VEH_MARCA: this.ID_MARCA,
-      VEH_MODELO: this.ID_MODELO,
-      VEH_ANIO: this.ID_ANIO
+      RE_PATENTE: this.selectedPatente,
+      RE_MARCA: this.selectedMarca,
+      RE_MODELO: this.selectedModelo,
+      RE_ANIO: this.selectedAnio
     };
 
     this.http.post('http://localhost:4000/reservar', reservation).subscribe(

@@ -63,33 +63,26 @@
                 </div>
           
                 <h4 class="subtitulo encabezado">Ingresar datos del vehículo</h4>
-                <div class="mb-3">
-                  <label for="patente" class="form-label">Patente</label>
-                  <select id="patente" class="form-select" [(ngModel)]="ID_VEHICULO">
-                    <option *ngFor="let patente of patentes" [value]="patente.ID_VEHICULO">{{ patente.PATENTE }}</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="marca" class="form-label">Marca</label>
-                  <select id="marca" class="form-select" [(ngModel)]="ID_MARCA">
-                    <option *ngFor="let marca of marcas" [value]="marca.ID_MARCA">{{ marca.MARCA }}</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="modelo" class="form-label">Modelo</label>
-                  <select id="modelo" class="form-select" [(ngModel)]="ID_MODELO">
-                    <option *ngFor="let modelo of modelos" [value]="modelo.ID_MODELO">{{ modelo.MODELO }}</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="anio" class="form-label">Año</label>
-                  <select id="anio" class="form-select" [(ngModel)]="ID_ANIO">
-                    <option *ngFor="let anio of anios" [value]="anio.ID_ANIO">{{ anio.ANIO }}</option>
-                  </select>
-                </div>
-          
-                <button type="button" class="btn btn-primary w-100" (click)="reservar()">Reservar</button>
-              </div>
+                  <div class="mb-3">
+                    <label for="patente" class="form-label">Patente</label>
+                    <select id="patente" class="form-select" [(ngModel)]="selectedPatente" (change)="loadVehicleData()">
+                      <option *ngFor="let patente of patentes" [value]="patente.PATENTE">{{ patente.PATENTE }}</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="marca" class="form-label">Marca</label>
+                    <input type="text" id="marca" class="form-control" [(ngModel)]="selectedMarca" readonly>
+                  </div>
+                  <div class="mb-3">
+                    <label for="modelo" class="form-label">Modelo</label>
+                    <input type="text" id="modelo" class="form-control" [(ngModel)]="selectedModelo" readonly>
+                  </div>
+                  <div class="mb-3">
+                    <label for="anio" class="form-label">Año</label>
+                    <input type="text" id="anio" class="form-control" [(ngModel)]="selectedAnio" readonly>
+                  </div>               
+            </div>
+              <button type="button" class="btn btn-primary w-100" (click)="reservar()">Reservar</button>
           
 
         </div>
