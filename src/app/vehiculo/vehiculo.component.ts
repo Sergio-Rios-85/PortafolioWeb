@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-vehiculo',
   standalone: true,
-  imports: [CommonModule, FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './vehiculo.component.html',
   styleUrls: ['./vehiculo.component.css']
 })
@@ -33,15 +33,11 @@ export class VehiculoComponent {
   }
 
   cargarDatos() {
-    // Obtener datos para los select de marca, modelo, color y año
     this.http.get<any[]>('http://localhost:4000/marcas').subscribe(data => {
       this.marcas = data;
     });
 
-    this.http.get<any[]>('http://localhost:4000/modelos').subscribe(data => {
-      this.modelos = data;
-    });
-
+    // Inicialmente no cargamos todos los modelos, sino que se cargan según la marca seleccionada
     this.http.get<any[]>('http://localhost:4000/colores').subscribe(data => {
       this.colores = data;
     });
@@ -51,8 +47,14 @@ export class VehiculoComponent {
     });
   }
 
+  onMarcaChange(event: any) {
+    const idMarca = event.target.value;
+    this.http.get<any[]>(`http://localhost:4000/modelos?idMarca=${idMarca}`).subscribe(data => {
+      this.modelos = data;
+    });
+  }
+
   guardarVehiculo() {
-    // Validaciones
     if (!this.PATENTE || !this.MOTOR || !this.CHASIS || this.KILOMETRAJE == null || this.ID_MARCA == null || this.ID_MODELO == null || this.ID_COLOR == null || this.ID_ANIO == null) {
       alert('Por favor complete todos los campos obligatorios.');
       return;

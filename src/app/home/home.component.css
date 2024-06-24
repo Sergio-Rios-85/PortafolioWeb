@@ -17,7 +17,7 @@
 }
 
 .carousel {
-  max-width: 1200px; /* Ajusta el ancho del carrusel */
+  max-width: 1300px; /* Ajusta el ancho del carrusel */
   max-height: 400px; /* Ajusta la altura del carrusel */
   margin: 0 auto; /* Centra el carrusel */
 }

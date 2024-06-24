@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import validator from 'validator';
 
 @Component({
   selector: 'app-registro',
@@ -22,11 +23,25 @@ export class RegistroComponent implements OnInit {
   DIRECCION_CLIENTE!: string;
   CONTRASENA!: string;
 
+  telefonoFijoError: boolean = false;
+  celularClienteError: boolean = false;
+  correoClienteError: boolean = false;
+
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() { }
 
   registro() {
+    if (!this.validarCorreo(this.CORREO_CLIENTE)) {
+      this.correoClienteError = true;
+      return;
+    }
+
+    if (!this.validarTelefono(this.TELEFONO_FIJO) || !this.validarTelefono(this.CELULAR_CLIENTE)) {
+      alert('Por favor ingrese solo números en los campos de teléfono.');
+      return;
+    }
+
     const data = {
       RUT_CLIENTE: this.RUT_CLIENTE,
       NOMBRES_CLIENTE: this.NOMBRES_CLIENTE,
@@ -51,5 +66,21 @@ export class RegistroComponent implements OnInit {
         alert('Error en el servidor');
       }
     );
+  }
+
+  validarCorreo(correo: string): boolean {
+    const isValid = validator.isEmail(correo);
+    this.correoClienteError = !isValid;
+    return isValid;
+  }
+
+  validarTelefono(telefono: string): boolean {
+    const isValid = /^[0-9]*$/.test(telefono);
+    if (telefono === this.TELEFONO_FIJO) {
+      this.telefonoFijoError = !isValid;
+    } else if (telefono === this.CELULAR_CLIENTE) {
+      this.celularClienteError = !isValid;
+    }
+    return isValid;
   }
 }

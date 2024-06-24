@@ -33,6 +33,11 @@ export class ClienteComponent implements OnInit {
   }
 
   async enviarContacto() {
+    if (!this.validarCorreo(this.contacto.correo)) {
+      alert('Por favor ingrese un correo electrónico válido.');
+      return;
+    }
+
     try {
       const response = await this.http.post('http://localhost:4000/contacto', this.contacto).toPromise();
       alert('Su mensaje ha sido enviado exitosamente.');
@@ -40,5 +45,10 @@ export class ClienteComponent implements OnInit {
     } catch (error) {
       alert('Hubo un error al enviar el mensaje.');
     }
+  }
+
+  validarCorreo(correo: string): boolean {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(correo);
   }
 }
