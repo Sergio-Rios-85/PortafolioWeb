@@ -23,6 +23,6 @@
 }
 
 .carousel-inner img {
-  max-height: 400px; /* Ajusta la altura de las imágenes */
+  max-height: 300px; /* Ajusta la altura de las imágenes */
   object-fit: cover; /* Asegura que las imágenes se adapten bien */
 }

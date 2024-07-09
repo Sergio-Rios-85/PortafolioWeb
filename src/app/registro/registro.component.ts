@@ -26,6 +26,7 @@ export class RegistroComponent implements OnInit {
   telefonoFijoError: boolean = false;
   celularClienteError: boolean = false;
   correoClienteError: boolean = false;
+  rutClienteError: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -39,6 +40,11 @@ export class RegistroComponent implements OnInit {
 
     if (!this.validarTelefono(this.TELEFONO_FIJO) || !this.validarTelefono(this.CELULAR_CLIENTE)) {
       alert('Por favor ingrese solo números en los campos de teléfono.');
+      return;
+    }
+
+    if (!this.validarRut(this.RUT_CLIENTE)) {
+      alert('Por favor ingrese un RUT válido.');
       return;
     }
 
@@ -81,6 +87,13 @@ export class RegistroComponent implements OnInit {
     } else if (telefono === this.CELULAR_CLIENTE) {
       this.celularClienteError = !isValid;
     }
+    return isValid;
+  }
+
+  validarRut(rut: string): boolean {
+    const rutPattern = /^[0-9]{7,8}-[0-9kK]$/;
+    const isValid = rutPattern.test(rut);
+    this.rutClienteError = !isValid;
     return isValid;
   }
 }

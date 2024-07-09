@@ -30,8 +30,12 @@
             
             <div class="mb-3">
               <label for="rutCliente" class="form-label">RUT</label>
-              <input type="text" class="form-control" id="rutCliente" [(ngModel)]="RUT_CLIENTE" name="RUT_CLIENTE" required>
+              <input type="text" class="form-control" id="rutCliente" [(ngModel)]="RUT_CLIENTE" name="RUT_CLIENTE" required pattern="^[0-9]{7,8}-[0-9kK]$" (ngModelChange)="validarRut(RUT_CLIENTE)">
+              <div *ngIf="rutClienteError" class="text-danger">
+                Por favor ingrese un RUT válido (Ejemplo: 16768897-K).
+              </div>
             </div>
+            
 
             <div class="mb-3">
               <label for="nombresCliente" class="form-label">Nombres</label>
@@ -56,7 +60,7 @@
               </div>
             </div>
             <div class="mb-3">
-              <label for="celularCliente" class="form-label">Celular</label>
+              <label for="celularCliente" class="form-label">Celular (+569)</label>
               <input type="tel" class="form-control" id="celularCliente" [(ngModel)]="CELULAR_CLIENTE" name="CELULAR_CLIENTE" required pattern="[0-9]*" inputmode="numeric" (ngModelChange)="validarTelefono(CELULAR_CLIENTE)">
               <div *ngIf="celularClienteError" class="text-danger">
                 Por favor ingrese solo números en el número de celular.

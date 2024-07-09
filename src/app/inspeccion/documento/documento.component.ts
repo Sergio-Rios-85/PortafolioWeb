@@ -18,12 +18,26 @@ export class DocumentoComponent {
   inspeccionSeleccionada: any;
   selectedImage: string | ArrayBuffer | null = null;
   imageFile: File | null = null;
+  errorPatente: boolean = false;
+  errorMessage: string = 'Formato de patente incorrecto. Por favor, ingrese una patente válida.';
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() { }
 
+  validarPatente(patente: string): boolean {
+    const regex = /^[A-Z]{4}\d{2}$/; 
+    return regex.test(patente);
+  }
+
   buscarInspecciones() {
+    if (!this.validarPatente(this.searchPatente)) {
+      this.errorPatente = true;
+      return;
+    }
+
+    this.errorPatente = false;
+
     this.http.get<any[]>('http://localhost:4000/inspecciones').subscribe(
       data => {
         this.inspecciones = data.filter(inspeccion => {
@@ -39,13 +53,13 @@ export class DocumentoComponent {
   }
 
   onInspeccionClick(inspeccion: any) {
-    console.log('Item clicked:', inspeccion); // Verificar que el evento click se está disparando
+    console.log('Item clicked:', inspeccion); 
     this.seleccionarInspeccion(inspeccion);
   }
 
   seleccionarInspeccion(inspeccion: any) {
     this.inspeccionSeleccionada = inspeccion;
-    console.log('Inspección seleccionada:', this.inspeccionSeleccionada); // Log para verificar selección
+    console.log('Inspección seleccionada:', this.inspeccionSeleccionada); 
   }
 
   onFileSelected(event: Event) {
@@ -64,7 +78,7 @@ export class DocumentoComponent {
       return;
     }
 
-    console.log('Generando PDF para la inspección:', this.inspeccionSeleccionada); // Log para verificar la generación del PDF
+    console.log('Generando PDF para la inspección:', this.inspeccionSeleccionada);
 
     const formData = new FormData();
     formData.append('inspeccion', JSON.stringify(this.inspeccionSeleccionada));

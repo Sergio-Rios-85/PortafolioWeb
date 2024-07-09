@@ -25,6 +25,8 @@ export class VehiculoComponent {
   modelos: any[] = [];
   colores: any[] = [];
   anios: any[] = [];
+  errorPatente: boolean = false;
+  errorMessage: string = 'Formato de patente incorrecto. Por favor, ingrese una patente válida.';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -37,7 +39,6 @@ export class VehiculoComponent {
       this.marcas = data;
     });
 
-    // Inicialmente no cargamos todos los modelos, sino que se cargan según la marca seleccionada
     this.http.get<any[]>('http://localhost:4000/colores').subscribe(data => {
       this.colores = data;
     });
@@ -54,6 +55,11 @@ export class VehiculoComponent {
     });
   }
 
+  validarPatente(patente: string): boolean {
+    const regex = /^[A-Z]{4}\d{2}$/;
+    return regex.test(patente);
+  }
+
   guardarVehiculo() {
     if (!this.PATENTE || !this.MOTOR || !this.CHASIS || this.KILOMETRAJE == null || this.ID_MARCA == null || this.ID_MODELO == null || this.ID_COLOR == null || this.ID_ANIO == null) {
       alert('Por favor complete todos los campos obligatorios.');
@@ -63,6 +69,12 @@ export class VehiculoComponent {
       alert('El kilometraje debe ser un valor positivo.');
       return;
     }
+    if (!this.validarPatente(this.PATENTE)) {
+      this.errorPatente = true;
+      return;
+    }
+
+    this.errorPatente = false;
 
     const vehiculo = {
       PATENTE: this.PATENTE,

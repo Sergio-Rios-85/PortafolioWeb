@@ -16,13 +16,33 @@ export class BusquedaVehClienteComponent {
 
   constructor(private http: HttpClient) { }
 
+  validarPatente(patente: string): boolean {
+    // Aquí puedes definir la lógica de validación de la patente
+    const regex = /^[A-Z]{4}\d{2}$/; 
+    return regex.test(patente);
+  }
+
   buscarVehiculos() {
+    const errorMessage = document.getElementById('error-message');
+  
+    if (!this.validarPatente(this.PATENTE)) {
+      if (errorMessage) {
+        errorMessage.style.display = 'block';
+      }
+      return;
+    }
+  
+    if (errorMessage) {
+      errorMessage.style.display = 'none';
+    }
+  
     const filtros = {
       PATENTE: this.PATENTE
     };
-
+  
     this.http.post<any[]>('http://localhost:4000/buscar-vehiculos', filtros).subscribe(
       data => {
+        console.log(data); // Verifica los datos recibidos
         this.vehiculos = data;
       },
       error => {
@@ -31,4 +51,6 @@ export class BusquedaVehClienteComponent {
       }
     );
   }
+  
+  
 }

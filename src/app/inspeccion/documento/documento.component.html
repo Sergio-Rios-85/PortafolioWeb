@@ -37,6 +37,7 @@
           <div class="mb-3">
             <label for="patente" class="form-label text-white">Ingrese la patente</label>
             <input type="text" class="form-control" id="patente" [(ngModel)]="searchPatente" placeholder="Ingrese la patente">
+            <div class="text-danger" *ngIf="errorPatente">{{ errorMessage }}</div>
           </div>
           <button class="btn btn-primary mb-3" (click)="buscarInspecciones()">Buscar</button>
           <ul class="list-group">
